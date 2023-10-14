@@ -21,13 +21,13 @@ def count_products():
 
 @app.route('/product_names')
 def product_names_list():
-    """Route to list the names of the products (limiting to first 100)."""
+    """Route to list the names of the products"""
     return "<br>".join(product_names)
 
 
 @app.route('/spare_parts')
 def spare_parts_list():
-    """Route to display the products and their associated spare parts (limiting to first 20)."""
+    """Route to display the products and their associated spare parts."""
     parts_list = [
         "<br>".join([f"<b>{product}</b>: {', '.join(parts)}"] + parts)
         for product, parts in list(spare_parts_dict.items())
