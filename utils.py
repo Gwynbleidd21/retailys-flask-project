@@ -1,10 +1,19 @@
 import xml.etree.ElementTree as ElTree
+import zipfile
 
 
-def load_xml_data(xml_file):
-    """Load and parse XML data from a file."""
+def load_xml_data(file_path):
+    """Load and parse XML data from a file or ZIP archive."""
     try:
-        tree = ElTree.parse(xml_file)
+        if file_path.endswith('.zip'):
+            with zipfile.ZipFile(file_path, 'r') as z:
+                # Assuming the XML file inside the ZIP has the same name as the ZIP without the .zip extension
+                xml_file_name = file_path.rsplit('.', 1)[0] + '.xml'
+                with z.open(xml_file_name) as xml_file:
+                    tree = ElTree.parse(xml_file)
+        else:
+            tree = ElTree.parse(file_path)
+
         root = tree.getroot()
 
         product_names = [item.get('name') for item in root.findall('.//item')]
