@@ -8,7 +8,7 @@ def load_xml_data(file_path):
         if file_path.endswith('.zip'):
             with zipfile.ZipFile(file_path, 'r') as z:
                 # Assuming the XML file inside the ZIP has the same name as the ZIP without the .zip extension
-                xml_file_name = file_path.rsplit('.', 1)[0] + '.xml'
+                xml_file_name = "export_full.xml"
                 with z.open(xml_file_name) as xml_file:
                     tree = ElTree.parse(xml_file)
         else:

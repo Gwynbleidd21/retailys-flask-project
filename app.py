@@ -3,7 +3,7 @@ from utils import load_xml_data
 
 app = Flask(__name__)
 
-product_names, spare_parts_dict = load_xml_data('export_full.xml')
+product_names, spare_parts_dict = load_xml_data('astra_export_xml.zip')
 
 
 @app.route('/')
