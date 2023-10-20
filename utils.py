@@ -16,7 +16,9 @@ def load_xml_data(file_path):
 
         root = tree.getroot()
 
-        product_names = [item.get('name') for item in root.findall('.//item')]
+        # product_names = [item.get('name') for item in root.findall('.//item')]
+        product_names_set = {item.get('name') for item in root.findall('.//item')}
+        product_names = list(product_names_set)
 
         spare_parts_dict = {}
         for item in root.findall('.//item'):
